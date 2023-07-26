@@ -43,22 +43,22 @@ import 'package:btoast/btoast.dart';
  BToast.hide(),
 ```
 
-## Props
+## Propriedades
 
-Aqui estão as propriedades disponíveis para o componente `b-toast`:
+Aqui estão as propriedades disponíveis para o widget `BToast`:
 
 | Atributo |  Tipo   |  Inicial  | Descrição                                                                                                                       |
 | :------- | :-----: | :-------: | :------------------------------------------------------------------------------------------------------------------------------ |
 | context  | Context  |    --     | Context da aplicação. (requerido)                                                                                         |
 | content  | String  |    --     | Define o conteúdo no toast. (requerido)                                                                                         |
 | type     | String  | `SUCCESS` | Oefine o tipo de toast. Pode ser `SUCCESS`, `ERROR`, `WARNING`, `INFO`, ou qualquer outro tipo personalizado.                   |
-| duration | Number  |  `5`   | Define a duração em segundos que o toast ficará visível antes de ser fechado automaticamente. Padrão: `5000` (5 segundos). |
+| duration | Number  |  `5`   | Define a duração em segundos que o toast ficará visível antes de ser fechado automaticamente. Padrão: `5` (segundos). |
 | isDark   | Boolean |  `false`  | Define o tema padrão do toast. Padrão: `false`. |
 | title   | String |  `""`  | Define o titulo do toast. Padrão: `""`. |
 
 ## Design Baseado em Pine UI
 
-O design deste projeto de toasts, `b-toast`, foi desenvolvido com base no Pine UI, um design system moderno e flexível para design de interfaces. O Pine UI fornece um conjunto abrangente de componentes e estilos consistentes que ajudaram a moldar a aparência e a experiência do b-toast.
+O design deste projeto de toasts, `BToast`, foi desenvolvido com base no Pine UI, um design system moderno e flexível para design de interfaces. O Pine UI fornece um conjunto abrangente de componentes e estilos consistentes que ajudaram a moldar a aparência e a experiência do BToast.
 
 Para obter mais informações sobre o Pine UI, você pode visitar o [Pine UI](https://www.behance.net/gallery/161882269/Design-System-Pine-UI-v1-bTree) e explorar os recursos e a documentação fornecidos.
 
