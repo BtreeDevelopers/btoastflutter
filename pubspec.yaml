@@ -1,7 +1,7 @@
 name: btoast
 description: Pacote de toast para flutter by bTree.
-version: 0.1.1
-homepage: https://github.com/BtreeDevelopers/b_toast_flutter
+version: 0.1.2
+homepage: https://github.com/BtreeDevelopers/btoastflutter
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
