@@ -1,42 +1,55 @@
+/// Uma biblioteca Flutter que oferece funcionalidade para exibir toasts personalizados na tela.
 library btoast;
 
 import 'package:flutter/material.dart';
 
+/// Enumeração que define os diferentes tipos de toasts.
 enum Type {
-  SUCCESS,
-  ERROR,
-  WARNING,
-  INFO,
+  SUCCESS, // Toast de sucesso.
+  ERROR, // Toast de erro.
+  WARNING, // Toast de aviso.
+  INFO, // Toast de informação.
 }
 
+/// Classe responsável por exibir os toasts personalizados.
 class BToast {
-  // static List<OverlayEntry> _overlayEntries = [];
-  static late OverlayEntry? _overlayEntry = null;
+  static late OverlayEntry? _overlayEntry;
   static late bool _inScreen = false;
   static List<Widget> _toasts = [];
   static final GlobalKey<_ListToastState> _listToastKey =
       GlobalKey<_ListToastState>();
 
+  /// Exibe um toast personalizado na tela.
+  ///
+  /// - [context]: O contexto do widget onde o toast será exibido.
+  /// - [content]: O conteúdo a ser exibido no toast.
+  /// - [duration]: A duração do toast em segundos. O padrão é 5 segundos.
+  /// - [theme]: O tema do toast (Type.SUCCESS, Type.ERROR, Type.WARNING, Type.INFO).
+  /// - [isDark]: Define se o toast terá um tema escuro ou claro.
+  /// - [title]: O título do toast (opcional).
   static void show(BuildContext context, String content,
       {int duration = 5,
       Type theme = Type.SUCCESS,
       bool isDark = true,
       String title = ""}) {
-    // hide();
     int index = _toasts.length;
     _toasts.add(BToastComponent(
-        hide: () => removeList(index),
-        duration: duration,
-        id: index,
-        theme: theme,
-        isDark: isDark,
-        content: content,
-        title: title));
+      hide: () => removeList(index),
+      duration: duration,
+      id: index,
+      theme: theme,
+      isDark: isDark,
+      content: content,
+      title: title,
+    ));
     if (!_inScreen) {
       OverlayEntry overlayEntry = OverlayEntry(
-          builder: (BuildContext context) =>
-              ListToast(key: _listToastKey, toasts: _toasts));
-      Overlay.of(context)!.insert(overlayEntry);
+        builder: (BuildContext context) => ListToast(
+          key: _listToastKey,
+          toasts: _toasts,
+        ),
+      );
+      Overlay.of(context).insert(overlayEntry);
       _overlayEntry = overlayEntry;
       _inScreen = true;
     }
@@ -53,12 +66,10 @@ class BToast {
 
   static void hide() {
     if (_toasts.isNotEmpty) {
-      int index = 0;
       _toasts.clear();
       _listToastKey.currentState?.updateToasts('rmv');
     }
     if (_overlayEntry != null) {
-      // OverlayEntry overlayEntry = _overlayEntries.removeLast();
       _overlayEntry!.remove();
       _overlayEntry = null;
       _inScreen = false;
@@ -66,13 +77,15 @@ class BToast {
   }
 }
 
+/// Classe StatefulWidget que exibe a lista de toasts na tela.
 class ListToast extends StatefulWidget {
   const ListToast({
-    super.key,
-    required List<Widget> toasts,
-  }) : _toasts = toasts;
+    Key? key,
+    required this.toasts,
+  }) : super(key: key);
 
-  final List<Widget> _toasts;
+  final List<Widget> toasts;
+
   @override
   State<ListToast> createState() => _ListToastState();
 }
@@ -85,29 +98,32 @@ class _ListToastState extends State<ListToast> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: widget._toasts.toList(),
+      children: widget.toasts.toList(),
     );
   }
 }
 
+/// Classe StatefulWidget que exibe um toast personalizado na tela.
 class BToastComponent extends StatefulWidget {
-  late final Function hide;
-  late final int id;
-  late final int duration;
-  late final bool isDark;
-  late final Type theme;
-  late final String content;
-  late final String title;
-  BToastComponent(
-      {super.key,
-      required this.hide,
-      required this.duration,
-      required this.id,
-      required this.isDark,
-      required this.theme,
-      required this.title,
-      required this.content});
-  // Adicione a chave global aqui
+  final Function hide;
+  final int id;
+  final int duration;
+  final bool isDark;
+  final Type theme;
+  final String content;
+  final String title;
+
+  BToastComponent({
+    Key? key,
+    required this.hide,
+    required this.duration,
+    required this.id,
+    required this.isDark,
+    required this.theme,
+    required this.title,
+    required this.content,
+  }) : super(key: key);
+
   @override
   _BToastComponentState createState() => _BToastComponentState();
 }
@@ -164,7 +180,6 @@ class _BToastComponentState extends State<BToastComponent>
     _isAnimatingOut = true;
     _controller.reverse().then((value) {
       setState(() {
-        // widget.hide();
         _isVisible = false;
       });
     });
@@ -192,8 +207,9 @@ class _BToastComponentState extends State<BToastComponent>
                         width: MediaQuery.of(context).size.width,
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                             color: widget.isDark
                                 ? const Color(0xff252831)
                                 : const Color(0xffe5e6e8),
@@ -284,6 +300,6 @@ class _BToastComponentState extends State<BToastComponent>
               ),
             ),
           )
-        : SizedBox.shrink(); // Retornar um widget vazio se não for visível
+        : const SizedBox.shrink();
   }
 }
