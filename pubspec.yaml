@@ -1,6 +1,6 @@
 name: btoast
 description: O BToast é uma biblioteca de toasts simples e personalizáveis para Flutter. Ele fornece um widget fácil de usar para exibir notificações no estilo toast em seu aplicativo.
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/BtreeDevelopers/btoastflutter
 
 environment:

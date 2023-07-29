@@ -139,7 +139,6 @@ class _BToastComponentState extends State<BToastComponent>
   double percent = 0.0;
   late AnimationController _controller;
 
-  bool _isAnimatingOut = false;
   bool _isVisible = true;
   late int time = widget.duration;
 
@@ -148,7 +147,7 @@ class _BToastComponentState extends State<BToastComponent>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
 
     // Adicionar um listener para atualizar o estado quando a animação for executada
@@ -168,7 +167,7 @@ class _BToastComponentState extends State<BToastComponent>
 
   void animatePercent() {
     // Simulando uma animação gradual para a barra de progresso
-    Future.delayed(Duration(milliseconds: 0), () {
+    Future.delayed(const Duration(milliseconds: 0), () {
       setState(() {
         percent = 0.7;
       });
@@ -177,7 +176,6 @@ class _BToastComponentState extends State<BToastComponent>
   }
 
   void _animateOut() {
-    _isAnimatingOut = true;
     _controller.reverse().then((value) {
       setState(() {
         _isVisible = false;
@@ -246,7 +244,7 @@ class _BToastComponentState extends State<BToastComponent>
                                                   ),
                                                 ),
                                               )
-                                            : SizedBox.shrink(),
+                                            : const SizedBox.shrink(),
                                         Text(
                                           widget.content,
                                           style: TextStyle(
@@ -270,7 +268,7 @@ class _BToastComponentState extends State<BToastComponent>
                                   child: Icon(
                                     Icons.close,
                                     color: widget.isDark
-                                        ? Color(0xffC6C6C6)
+                                        ? const Color(0xffC6C6C6)
                                         : Colors.black,
                                   ),
                                 ),
