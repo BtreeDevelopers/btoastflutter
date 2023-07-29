@@ -4,7 +4,7 @@
 
 O `b-toast` é uma biblioteca de toasts simples e personalizáveis para Flutter. Ele fornece um widget fácil de usar para exibir notificações no estilo toast em seu aplicativo.
 
-![](./exemplo.gif)
+![](https://raw.githubusercontent.com/BtreeDevelopers/btoastflutter/main/exemplo.gif)
 
 ## Recursos
 
