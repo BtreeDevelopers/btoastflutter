@@ -221,43 +221,33 @@ class _BToastComponentState extends State<BToastComponent>
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                                    child: Row(
-                                      children: [
-                                        widget.title != ""
-                                            ? Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 5),
-                                                child: Text(
-                                                  widget.title,
-                                                  style: TextStyle(
-                                                    fontFamily: "Poppins",
-                                                    color: themeColor[
-                                                        widget.theme]!,
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    decoration:
-                                                        TextDecoration.none,
-                                                  ),
-                                                ),
-                                              )
-                                            : const SizedBox.shrink(),
-                                        Text(
-                                          widget.content,
-                                          style: TextStyle(
-                                            fontFamily: "Poppins",
-                                            color: widget.isDark
-                                                ? const Color(0xffC6C6C6)
-                                                : Colors.black,
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.w400,
-                                            decoration: TextDecoration.none,
-                                          ),
+                                if (widget.title != "")
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 5),
+                                      child: Text(
+                                        widget.title,
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          color: themeColor[widget.theme]!,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.bold,
+                                          decoration: TextDecoration.none,
                                         ),
-                                      ],
+                                      ),
+                                    ),
+                                  ),
+                                Expanded(
+                                  child: Text(
+                                    widget.content,
+                                    style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      color: widget.isDark
+                                          ? const Color(0xffC6C6C6)
+                                          : Colors.black,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w400,
+                                      decoration: TextDecoration.none,
                                     ),
                                   ),
                                 ),
