@@ -66,6 +66,15 @@ Para obter mais informações sobre o Pine UI, você pode visitar o [Pine UI](ht
 
 Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
 
-## Outras versões
+## Disponibilidades Atuais
 
- - Disponivel para Vue 2 [NPM](https://www.npmjs.com/package/b-toast)
+O bToast está disponível para as seguintes plataformas:
+
+- **Vue**: Utilize o pacote [b-toast-vue](https://www.npmjs.com/package/b-toast).
+- **React**: Utilize o pacote [b-toast-react](https://www.npmjs.com/package/b-toast-react).
+
+## Próximas Disponibilidades
+
+Em breve, o bToast estará disponível para:
+- Angular
+- React Native
